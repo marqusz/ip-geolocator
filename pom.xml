@@ -107,9 +107,16 @@
 				</executions>
 			</plugin>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-site-plugin</artifactId>
-				<version>3.9.1</version>
+  				<groupId>org.apache.maven.plugins</groupId>
+  				<artifactId>maven-site-plugin</artifactId>
+  				<version>3.9.1</version>
+  				<dependencies>
+    					<dependency>
+      						<groupId>org.apache.maven.wagon</groupId>
+      						<artifactId>wagon-ssh</artifactId>
+      						<version>3.4.2</version>
+    					</dependency>
+  				</dependencies>
 			</plugin>
 		</plugins>
 	</build>
@@ -122,4 +129,12 @@
 			</plugin>
 		</plugins>
 	</reporting>
+	
+	<distributionManagement>
+  		<site>
+    			<id>shrek</id>
+    			<url>scp://@shrek.unideb.hu:2222/home/zsmark/public_html/${project.artifactId}</url>
+  		</site>
+	</distributionManagement>
+	
 </project>
